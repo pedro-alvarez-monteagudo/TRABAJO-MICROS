@@ -1,0 +1,12 @@
+../Core/Src/main.c:77:6:activa_alarma	5
+../Core/Src/main.c:91:5:encender_led	2
+../Core/Src/main.c:95:6:sensor_distancia	2
+../Core/Src/main.c:102:6:HAL_ADC_ConvCpltCallback	1
+../Core/Src/main.c:114:5:main	1
+../Core/Src/main.c:181:6:SystemClock_Config	3
+../Core/Src/main.c:228:13:MX_ADC1_Init	4
+../Core/Src/main.c:290:13:MX_TIM3_Init	6
+../Core/Src/main.c:346:13:MX_DMA_Init	1
+../Core/Src/main.c:364:13:MX_GPIO_Init	1
+../Core/Src/main.c:427:6:HAL_TIM_IC_CaptureCallback	5
+../Core/Src/main.c:454:6:Error_Handler	1
