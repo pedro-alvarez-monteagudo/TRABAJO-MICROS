@@ -57,18 +57,16 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define INFRARROJOS_Pin GPIO_PIN_0
-#define INFRARROJOS_GPIO_Port GPIOA
 #define LDR_Pin GPIO_PIN_1
 #define LDR_GPIO_Port GPIOA
+#define INFRARROJO_Pin GPIO_PIN_2
+#define INFRARROJO_GPIO_Port GPIOA
 #define LUZ_ALARMA_Pin GPIO_PIN_1
 #define LUZ_ALARMA_GPIO_Port GPIOB
 #define LUZ_EXTERIOR_Pin GPIO_PIN_7
 #define LUZ_EXTERIOR_GPIO_Port GPIOE
 #define LUZ_INTERIOR_Pin GPIO_PIN_13
 #define LUZ_INTERIOR_GPIO_Port GPIOD
-#define ALARMA_Pin GPIO_PIN_15
-#define ALARMA_GPIO_Port GPIOD
 #define TRIGGER_Pin GPIO_PIN_8
 #define TRIGGER_GPIO_Port GPIOA
 

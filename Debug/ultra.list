@@ -37,15 +37,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  16 .debug_rnglists 0000090e  00000000  00000000  0002e2b8  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_macro  00016852  00000000  00000000  0002ebc6  2**0
+ 17 .debug_macro  00016846  00000000  00000000  0002ebc6  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_line   0000d5de  00000000  00000000  00045418  2**0
+ 18 .debug_line   0000d5de  00000000  00000000  0004540c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_str    000940b4  00000000  00000000  000529f6  2**0
+ 19 .debug_str    00094084  00000000  00000000  000529ea  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .debug_frame  000030c4  00000000  00000000  000e6aac  2**2
+ 20 .debug_frame  000030c4  00000000  00000000  000e6a70  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 00000058  00000000  00000000  000e9b70  2**0
+ 21 .debug_line_str 00000058  00000000  00000000  000e9b34  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -1186,9 +1186,9 @@ static void MX_GPIO_Init(void)
  80009d2:	f001 fe13 	bl	80025fc <HAL_GPIO_WritePin>
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOD, LUZ_INTERIOR_Pin|ALARMA_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(LUZ_INTERIOR_GPIO_Port, LUZ_INTERIOR_Pin, GPIO_PIN_RESET);
  80009d6:	2200      	movs	r2, #0
- 80009d8:	f44f 4120 	mov.w	r1, #40960	; 0xa000
+ 80009d8:	f44f 5100 	mov.w	r1, #8192	; 0x2000
  80009dc:	482c      	ldr	r0, [pc, #176]	; (8000a90 <MX_GPIO_Init+0x154>)
  80009de:	f001 fe0d 	bl	80025fc <HAL_GPIO_WritePin>
 
@@ -1199,9 +1199,9 @@ static void MX_GPIO_Init(void)
  80009e8:	482a      	ldr	r0, [pc, #168]	; (8000a94 <MX_GPIO_Init+0x158>)
  80009ea:	f001 fe07 	bl	80025fc <HAL_GPIO_WritePin>
 
-  /*Configure GPIO pins : INFRARROJOS_Pin PA2 PA3 */
-  GPIO_InitStruct.Pin = INFRARROJOS_Pin|GPIO_PIN_2|GPIO_PIN_3;
- 80009ee:	230d      	movs	r3, #13
+  /*Configure GPIO pin : INFRARROJO_Pin */
+  GPIO_InitStruct.Pin = INFRARROJO_Pin;
+ 80009ee:	2304      	movs	r3, #4
  80009f0:	617b      	str	r3, [r7, #20]
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
  80009f2:	2300      	movs	r3, #0
@@ -1209,7 +1209,7 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
  80009f6:	2300      	movs	r3, #0
  80009f8:	61fb      	str	r3, [r7, #28]
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+  HAL_GPIO_Init(INFRARROJO_GPIO_Port, &GPIO_InitStruct);
  80009fa:	f107 0314 	add.w	r3, r7, #20
  80009fe:	4619      	mov	r1, r3
  8000a00:	4824      	ldr	r0, [pc, #144]	; (8000a94 <MX_GPIO_Init+0x158>)
@@ -1253,9 +1253,9 @@ static void MX_GPIO_Init(void)
  8000a38:	4814      	ldr	r0, [pc, #80]	; (8000a8c <MX_GPIO_Init+0x150>)
  8000a3a:	f001 fc43 	bl	80022c4 <HAL_GPIO_Init>
 
-  /*Configure GPIO pins : LUZ_INTERIOR_Pin ALARMA_Pin */
-  GPIO_InitStruct.Pin = LUZ_INTERIOR_Pin|ALARMA_Pin;
- 8000a3e:	f44f 4320 	mov.w	r3, #40960	; 0xa000
+  /*Configure GPIO pin : LUZ_INTERIOR_Pin */
+  GPIO_InitStruct.Pin = LUZ_INTERIOR_Pin;
+ 8000a3e:	f44f 5300 	mov.w	r3, #8192	; 0x2000
  8000a42:	617b      	str	r3, [r7, #20]
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
  8000a44:	2301      	movs	r3, #1
@@ -1266,7 +1266,7 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
  8000a4c:	2300      	movs	r3, #0
  8000a4e:	623b      	str	r3, [r7, #32]
-  HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
+  HAL_GPIO_Init(LUZ_INTERIOR_GPIO_Port, &GPIO_InitStruct);
  8000a50:	f107 0314 	add.w	r3, r7, #20
  8000a54:	4619      	mov	r1, r3
  8000a56:	480e      	ldr	r0, [pc, #56]	; (8000a90 <MX_GPIO_Init+0x154>)
