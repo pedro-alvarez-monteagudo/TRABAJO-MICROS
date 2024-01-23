@@ -75,15 +75,15 @@ uint32_t elapsed_time=0;
 uint32_t start_time=0;
 
 void activa_alarma(){
-	if (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_3) == GPIO_PIN_SET){
+	if (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_2) == GPIO_PIN_SET){
       start_time = HAL_GetTick();
 
       while((HAL_GetTick() - start_time) < 10000){}
 
       while (((HAL_GetTick() - start_time) >= 10000)&&((HAL_GetTick() - start_time) < 20000))
-      HAL_GPIO_WritePin(GPIOD, GPIO_PIN_15, 1);
+      HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, 1);
       }
-	HAL_GPIO_WritePin(GPIOD, GPIO_PIN_15, 0);
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, 0);
 
 }
 //conversion de temperatura
@@ -374,7 +374,7 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOD_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(LUZ_ALARMA_GPIO_Port, LUZ_ALARMA_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(LUZ_EXTERIOR_GPIO_Port, LUZ_EXTERIOR_Pin, GPIO_PIN_RESET);
@@ -385,18 +385,18 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(TRIGGER_GPIO_Port, TRIGGER_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : INFRARROJOS_Pin PA3 */
-  GPIO_InitStruct.Pin = INFRARROJOS_Pin|GPIO_PIN_3;
+  /*Configure GPIO pins : INFRARROJOS_Pin PA2 PA3 */
+  GPIO_InitStruct.Pin = INFRARROJOS_Pin|GPIO_PIN_2|GPIO_PIN_3;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : PB1 */
-  GPIO_InitStruct.Pin = GPIO_PIN_1;
+  /*Configure GPIO pin : LUZ_ALARMA_Pin */
+  GPIO_InitStruct.Pin = LUZ_ALARMA_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+  HAL_GPIO_Init(LUZ_ALARMA_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : LUZ_EXTERIOR_Pin */
   GPIO_InitStruct.Pin = LUZ_EXTERIOR_Pin;

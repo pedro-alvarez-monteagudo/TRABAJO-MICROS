@@ -61,6 +61,8 @@ void Error_Handler(void);
 #define INFRARROJOS_GPIO_Port GPIOA
 #define LDR_Pin GPIO_PIN_1
 #define LDR_GPIO_Port GPIOA
+#define LUZ_ALARMA_Pin GPIO_PIN_1
+#define LUZ_ALARMA_GPIO_Port GPIOB
 #define LUZ_EXTERIOR_Pin GPIO_PIN_7
 #define LUZ_EXTERIOR_GPIO_Port GPIOE
 #define LUZ_INTERIOR_Pin GPIO_PIN_13
